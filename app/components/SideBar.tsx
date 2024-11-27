@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import { usePathname } from "next/navigation"; // Import usePathname from next/navigation
@@ -23,12 +23,20 @@ import Link from "next/link";
 
 const routes = [
   { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
-  { name: "Tasks", path: "/tasks", icon: <TaskIcon /> },
-  { name: "Completed", path: "/tasks/completed", icon: <CheckCircleIcon /> },
-  { name: "In Progress", path: "/tasks/in-progress", icon: <HourglassTopIcon /> },
-  { name: "To Do", path: "/tasks/to-do", icon: <ListAltIcon /> },
-  { name: "Team", path: "/team", icon: <PeopleIcon /> },
-  { name: "Trash", path: "/trash", icon: <DeleteIcon /> },
+  { name: "Tasks", path: "/dashboard/tasks", icon: <TaskIcon /> },
+  {
+    name: "Completed",
+    path: "/dashboard/tasks/completed",
+    icon: <CheckCircleIcon />,
+  },
+  {
+    name: "In Progress",
+    path: "/dashboard/tasks/in-progress",
+    icon: <HourglassTopIcon />,
+  },
+  { name: "To Do", path: "/dashboard/tasks/to-do", icon: <ListAltIcon /> },
+  { name: "Team", path: "/dashboard/team", icon: <PeopleIcon /> },
+  { name: "Trash", path: "/dashboard/trash", icon: <DeleteIcon /> },
 ];
 
 export default function SideBar() {
@@ -38,7 +46,7 @@ export default function SideBar() {
     <Box
       sx={{
         width: "100%",
-        maxWidth: 300, 
+        maxWidth: 300,
         bgcolor: "background.paper",
         height: "100vh",
         display: "flex",
@@ -67,12 +75,12 @@ export default function SideBar() {
                     "&.Mui-selected": {
                       bgcolor: "primary.light",
                       color: "white",
-                      "& .MuiListItemIcon-root": { color: "white" }
+                      "& .MuiListItemIcon-root": { color: "white" },
                     },
                   }}
                 >
                   <ListItemIcon>{route.icon}</ListItemIcon>
-                  <ListItemText primary={route.name} sx={{color: "#000"}} />
+                  <ListItemText primary={route.name} sx={{ color: "#000" }} />
                 </ListItemButton>
               </Link>
             </ListItem>
