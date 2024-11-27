@@ -37,8 +37,8 @@ export default function SideBar() {
   return (
     <Box
       sx={{
-        width: "100%", // Full width
-        maxWidth: 300, // Restrict width if needed
+        width: "100%",
+        maxWidth: 300, 
         bgcolor: "background.paper",
         height: "100vh",
         display: "flex",
