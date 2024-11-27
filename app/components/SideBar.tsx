@@ -53,26 +53,26 @@ export default function SideBar() {
       <Box sx={{ p: 2 }}>
         <Logo />
       </Box>
-      <Divider />
 
       {/* Navigation Menu */}
       <nav aria-label="main mailbox folders">
         <List sx={{ mt: 1, width: "100%" }}>
           {routes.map((route) => (
-            <ListItem key={route.name} disablePadding sx={{ width: "100%" }}>
+            <ListItem key={route.name} disablePadding sx={{ width: "400px" }}>
               <Link href={route.path} passHref>
                 <ListItemButton
                   selected={pathname === route.path} // Highlight active route
                   sx={{
+                    width: "300px",
                     "&.Mui-selected": {
                       bgcolor: "primary.light",
                       color: "white",
-                      "& .MuiListItemIcon-root": { color: "white" },
+                      "& .MuiListItemIcon-root": { color: "white" }
                     },
                   }}
                 >
                   <ListItemIcon>{route.icon}</ListItemIcon>
-                  <ListItemText primary={route.name} />
+                  <ListItemText primary={route.name} sx={{color: "#000"}} />
                 </ListItemButton>
               </Link>
             </ListItem>
