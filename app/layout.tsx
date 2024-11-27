@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={{ display: "flex", background: "#f3f4f6" }}>
+      <body style={{ display: "flex", background: "#f3f4f6", flexDirection: "row" }}>
         <SideBar />
 
         <div style={{ width: "100%" }}>

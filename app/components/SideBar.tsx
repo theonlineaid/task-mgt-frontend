@@ -1,4 +1,7 @@
-import * as React from "react";
+"use client"
+
+import React from "react";
+import { usePathname } from "next/navigation"; // Import usePathname from next/navigation
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -6,59 +9,86 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
+import SettingsIcon from "@mui/icons-material/Settings";
 import Logo from "./Logo";
-import { Paper } from "@mui/material";
+
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import TaskIcon from "@mui/icons-material/Task";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import HourglassTopIcon from "@mui/icons-material/HourglassTop";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import PeopleIcon from "@mui/icons-material/People";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Link from "next/link";
+
+const routes = [
+  { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
+  { name: "Tasks", path: "/tasks", icon: <TaskIcon /> },
+  { name: "Completed", path: "/tasks/completed", icon: <CheckCircleIcon /> },
+  { name: "In Progress", path: "/tasks/in-progress", icon: <HourglassTopIcon /> },
+  { name: "To Do", path: "/tasks/to-do", icon: <ListAltIcon /> },
+  { name: "Team", path: "/team", icon: <PeopleIcon /> },
+  { name: "Trash", path: "/trash", icon: <DeleteIcon /> },
+];
 
 export default function SideBar() {
+  const pathname = usePathname(); // Use usePathname from next/navigation
+
   return (
     <Box
       sx={{
-        width: "100%",
-        maxWidth: 360,
+        width: "100%", // Full width
+        maxWidth: 300, // Restrict width if needed
         bgcolor: "background.paper",
         height: "100vh",
         display: "flex",
-        justifyContent: "space-between",
         flexDirection: "column",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
         boxShadow: 2,
       }}
     >
-      {/* <Paper elevation={1}> */}
-      <Box>
+      {/* Logo Section */}
+      <Box sx={{ p: 2 }}>
         <Logo />
-        <nav aria-label="main mailbox folders">
-          <List>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary="Inbox" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <DraftsIcon />
-                </ListItemIcon>
-                <ListItemText primary="Drafts" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </nav>
-        <Divider />
       </Box>
-      {/* </Paper> */}
+      <Divider />
 
-      <List>
+      {/* Navigation Menu */}
+      <nav aria-label="main mailbox folders">
+        <List sx={{ mt: 1, width: "100%" }}>
+          {routes.map((route) => (
+            <ListItem key={route.name} disablePadding sx={{ width: "100%" }}>
+              <Link href={route.path} passHref>
+                <ListItemButton
+                  selected={pathname === route.path} // Highlight active route
+                  sx={{
+                    "&.Mui-selected": {
+                      bgcolor: "primary.light",
+                      color: "white",
+                      "& .MuiListItemIcon-root": { color: "white" },
+                    },
+                  }}
+                >
+                  <ListItemIcon>{route.icon}</ListItemIcon>
+                  <ListItemText primary={route.name} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          ))}
+        </List>
+      </nav>
+      <Divider />
+
+      {/* Bottom Section */}
+      <List sx={{ mt: "auto" }}>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <DraftsIcon />
+              <SettingsIcon />
             </ListItemIcon>
-            <ListItemText primary="Drafts" />
+            <ListItemText primary="Settings" />
           </ListItemButton>
         </ListItem>
       </List>

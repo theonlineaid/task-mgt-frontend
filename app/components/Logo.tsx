@@ -3,8 +3,9 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 
 export default function Logo() {
   return (
-    <div>
-      <TaskAltIcon /> Aid
+    <div style={{fontSize: "38px"}}>
+      {/* <TaskAltIcon sx={{fontSize: "30px"}}  />  */}
+      Online Aid
     </div>
   );
 }

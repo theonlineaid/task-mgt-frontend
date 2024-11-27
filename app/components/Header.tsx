@@ -6,27 +6,32 @@ import { Box } from "@mui/material";
 
 export default function Header() {
   return (
-    <div>
+    <Box
+      sx={{
+        position: "sticky", // Makes the header sticky
+        top: 0, // Sticks to the top of the viewport
+        zIndex: 1000, // Ensures it stays above other elements
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        bgcolor: "background.paper",
+        padding: "24px 16px", // Adds padding for better aesthetics
+        // boxShadow: 1, // Optional: Adds a slight shadow for separation
+      }}
+    >
+      <SearchBar placeholder={"search.."} />
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
           flexDirection: "row",
+          alignItems: "center",
+          gap: "16px", // Adds spacing between Notification and AccountMenu
         }}
       >
-        <SearchBar placeholder={"search.."} />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Notification />
-          <AccountMenu />
-        </Box>
+        <Notification />
+        <AccountMenu />
       </Box>
-    </div>
+    </Box>
   );
 }
