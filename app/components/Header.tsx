@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Notification from "./Notification";
 import AccountMenu from "./AccountMenu";
 import SearchBar from "./SearchBar";
-import { Box, Drawer, IconButton } from "@mui/material";
+import { Box, Button, Drawer, IconButton } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import CreateTaskModal from "./TaskModel";
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false); // State to control the drawer
@@ -38,6 +39,8 @@ export default function Header() {
           gap: "16px", // Adds spacing between Notification and AccountMenu
         }}
       >
+        <CreateTaskModal />
+
         {/* Notification Icon */}
         <IconButton onClick={toggleDrawer}>
           <NotificationsIcon />
