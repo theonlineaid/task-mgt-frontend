@@ -57,7 +57,7 @@ const GanttChart = ({ tasks }: { tasks: Task[] }) => {
     <Chart
       chartType="Gantt"
       width="100%"
-      height="500px"
+      height="400px"
       data={data}
       options={options}
     />

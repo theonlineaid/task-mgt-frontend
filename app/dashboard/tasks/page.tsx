@@ -1,5 +1,8 @@
-import React from "react";
+import Tasklist from '@/app/components/TaskList'
+import React from 'react'
 
-export default function Tasks() {
-  return <div>Task</div>;
+export default function page() {
+  return (
+    <div style={{padding: "32px"}}><Tasklist /></div>
+  )
 }
