@@ -110,7 +110,7 @@ const LoginPage: React.FC = () => {
           </Typography>
         </form>
       </Box>
-      <Alert severity="success" sx={{ width: "100%", marginBottom: 2 }}>
+      <Alert severity="success" sx={{ width: "100%", my: 2 }}>
         <Typography> Admin : om@gmail.com</Typography>
         <Typography>pass: 123456</Typography>
       </Alert>

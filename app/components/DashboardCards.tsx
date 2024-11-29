@@ -25,8 +25,12 @@ const DashboardCards: React.FC = () => {
         const response = await fetch(
           "https://task-mgt-backend.onrender.com/api/task/dashboard",
           {
-            cache: "no-store", // Ensures fresh data on each request
+            method: "GET",
+            cache: "no-store",
             credentials: "include", // Ensures cookies are sent
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
         );
 
