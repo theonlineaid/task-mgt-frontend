@@ -7,9 +7,18 @@ import {
   Avatar,
   Stack,
   Divider,
+  IconButton,
+  Menu,
+  MenuItem,
 } from "@mui/material";
+import TaskMenu from "./TaskMenu";
 
-export default function TaskContent({ task }: any) {
+export default function TaskContent({
+  task,
+  onEdit,
+  onDelete,
+  onDuplicate,
+}: any) {
   const getInitials = (name: string) => {
     return name
       .split(" ")
@@ -34,10 +43,14 @@ export default function TaskContent({ task }: any) {
 
   return (
     <CardContent>
-      <Typography variant="h6" gutterBottom>
-        {task.title}
-      </Typography>
-      <Box sx={{ mb: 2 }}>
+      <TaskMenu
+        task={task}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        onDuplicate={onDuplicate}
+      />
+
+      <Box sx={{ my: 2 }}>
         <Typography variant="body2" color="textSecondary" component="div">
           Priority: <Chip label={task.priority} color="primary" size="small" />
         </Typography>

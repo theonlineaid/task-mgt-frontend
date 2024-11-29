@@ -22,10 +22,13 @@ export default function UserInfo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/user/get-team", {
-          method: "GET",
-          credentials: "include",
-        });
+        const res = await fetch(
+          "https://task-mgt-backend.onrender.com/api/user/get-team",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
         const data = await res.json();
         setUsers(data || []);
       } catch (error) {

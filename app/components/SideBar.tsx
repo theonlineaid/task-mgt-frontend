@@ -26,15 +26,15 @@ const routes = [
   { name: "Tasks", path: "/dashboard/tasks", icon: <TaskIcon /> },
   {
     name: "Completed",
-    path: "/dashboard/tasks/completed",
+    path: "/dashboard/complete",
     icon: <CheckCircleIcon />,
   },
   {
     name: "In Progress",
-    path: "/dashboard/tasks/in-progress",
+    path: "/dashboard/inprogress",
     icon: <HourglassTopIcon />,
   },
-  { name: "To Do", path: "/dashboard/tasks/to-do", icon: <ListAltIcon /> },
+  { name: "To Do", path: "/dashboard/todo", icon: <ListAltIcon /> },
   { name: "Team", path: "/dashboard/team", icon: <PeopleIcon /> },
   { name: "Trash", path: "/dashboard/trash", icon: <DeleteIcon /> },
 ];

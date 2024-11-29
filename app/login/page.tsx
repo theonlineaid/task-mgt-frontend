@@ -24,14 +24,17 @@ const LoginPage: React.FC = () => {
     setLoading(true); // Set loading state
 
     try {
-      const response = await fetch("http://localhost:5000/api/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-        credentials: "include", // Include cookies in the request
-      });
+      const response = await fetch(
+        "https://task-mgt-backend.onrender.com/api/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+          credentials: "include", // Include cookies in the request
+        }
+      );
 
       const data = await response.json();
 

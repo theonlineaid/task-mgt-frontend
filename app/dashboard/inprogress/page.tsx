@@ -7,9 +7,10 @@ import {
   Typography,
   Button,
   Grid,
+  TextField,
 } from "@mui/material";
 import TaskContent from "@/app/components/common/TaskContent";
-import SubTaskModel from "./SubTaskModel";
+import ReusableModal from "@/app/components/common/ReusableModal";
 
 export default function TaskBoard() {
   const [tasks, setTasks] = useState<any[]>([]);
@@ -101,12 +102,12 @@ export default function TaskBoard() {
     fetchTasks();
   }, []);
 
-  const stages = ["todo", "in progress", "completed"];
+  const stages = ["in progress"];
 
   return (
     <Box sx={{ p: 5 }}>
       <Typography variant="h5" gutterBottom>
-        Task Board
+        In progress
       </Typography>
       <Grid container spacing={2}>
         {stages.map((stage) => (
@@ -149,13 +150,37 @@ export default function TaskBoard() {
         ))}
       </Grid>
 
-      <SubTaskModel
-        subtaskDialog={subtaskDialog}
-        handleCloseSubtaskDialog={handleCloseSubtaskDialog}
-        handleCreateSubtask={handleCreateSubtask}
-        newSubtask={newSubtask}
-        handleSubtaskChange={handleSubtaskChange}
-      />
+      {/* ReusableModal for Adding Subtask */}
+      <ReusableModal
+        open={subtaskDialog.open}
+        onClose={handleCloseSubtaskDialog}
+        title="Add Subtask"
+        onSubmit={handleCreateSubtask}
+      >
+        <TextField
+          label="Title"
+          fullWidth
+          margin="normal"
+          value={newSubtask.title}
+          onChange={(e) => handleSubtaskChange("title", e.target.value)}
+        />
+        <TextField
+          label="Tag"
+          fullWidth
+          margin="normal"
+          value={newSubtask.tag}
+          onChange={(e) => handleSubtaskChange("tag", e.target.value)}
+        />
+        <TextField
+          label="Due Date"
+          type="date"
+          fullWidth
+          margin="normal"
+          InputLabelProps={{ shrink: true }}
+          value={newSubtask.date}
+          onChange={(e) => handleSubtaskChange("date", e.target.value)}
+        />
+      </ReusableModal>
     </Box>
   );
 }

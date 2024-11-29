@@ -67,7 +67,7 @@ export default function Header() {
             bgcolor: "background.paper", // Optional: Set background color
           }}
         >
-          <Notification />{" "}
+          Notification gose here
           {/* You can add your custom notification content here */}
         </Box>
       </Drawer>

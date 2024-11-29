@@ -23,7 +23,7 @@ const DashboardCards: React.FC = () => {
     const fetchTaskData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/task/dashboard",
+          "https://task-mgt-backend.onrender.com/api/task/dashboard",
           {
             cache: "no-store", // Ensures fresh data on each request
             credentials: "include", // Ensures cookies are sent
