@@ -24,7 +24,7 @@ const GanttChart = ({ tasks }: { tasks: Task[] }) => {
     { type: "date", label: "End Date" },
     { type: "number", label: "Duration" },
     { type: "number", label: "Percent Complete" },
-    { type: "string", label: "Dependencies" },
+    { type: "string", label: "Dependencies" }, // Added for dependencies
   ];
 
   // Transform the tasks into the required format for Google Gantt

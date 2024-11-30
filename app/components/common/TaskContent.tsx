@@ -41,12 +41,34 @@ export default function TaskContent({
     });
   };
 
+  const handleTrash = async (taskId: string) => {
+    try {
+      // Send a PUT request to the API to trash the task
+      const response = await fetch(`https://task-mgt-backend.onrender.com/api/task/${taskId}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        console.log("Task trashed successfully");
+        // Optionally, update local state to reflect the trashed task
+      } else {
+        console.error("Failed to trash the task");
+      }
+    } catch (error) {
+      console.error("Error occurred while trashing task:", error);
+    }
+  };
+
   return (
     <CardContent>
       <TaskMenu
         task={task}
         onEdit={onEdit}
-        onDelete={onDelete}
+        onDelete={handleTrash}
         onDuplicate={onDuplicate}
       />
 
