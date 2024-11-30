@@ -25,7 +25,7 @@ const Tasklist = () => {
     const fetchTasks = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/task",
+          "https://task-mgt-backend.onrender.com/api/task",
           {
             method: "GET",
             credentials: "include",
@@ -36,10 +36,10 @@ const Tasklist = () => {
         if (response.ok) {
           setTasks(result.tasks);
         } else {
-          console.error("Failed to fetch tasks");
+          console.log("Failed to fetch tasks");
         }
       } catch (error) {
-        console.error("Error fetching tasks:", error);
+        console.log("Error fetching tasks:", error);
       } finally {
         setLoading(false); // Set loading to false once the fetch operation is done
       }

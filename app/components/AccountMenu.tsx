@@ -31,7 +31,7 @@ export default function AccountMenu() {
   const handleLogout = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/user/logout",
+        "https://task-mgt-backend.onrender.com/api/user/logout",
         {
           method: "POST",
           credentials: "include", // Include cookies in the request
@@ -46,11 +46,11 @@ export default function AccountMenu() {
         router.push("/login"); // Redirect to login page
       } else {
         const data = await response.json();
-        console.error("Logout failed:", data.message);
+        console.log("Logout failed:", data.message);
         alert("Failed to logout: " + data.message);
       }
     } catch (error) {
-      console.error("Error during logout:", error);
+      console.log("Error during logout:", error);
       alert("An error occurred during logout.");
     }
   };

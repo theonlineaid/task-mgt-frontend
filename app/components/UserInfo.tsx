@@ -33,7 +33,7 @@ export default function UserInfo() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/user/get-team",
+          "https://task-mgt-backend.onrender.com/api/user/get-team",
           {
             method: "GET",
             credentials: "include",
@@ -82,7 +82,7 @@ export default function UserInfo() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {users.map((user: User) => (
+                {users.map((user: User) => (
                   <TableRow key={user._id}>
                     <TableCell>
                       <Stack direction="row" spacing={2} alignItems="center">
@@ -95,7 +95,7 @@ export default function UserInfo() {
                     <TableCell>{user.role}</TableCell>
                     <TableCell>{user._id}</TableCell>
                   </TableRow>
-                ))} */}
+                ))}
               </TableBody>
             </Table>
           </TableContainer>

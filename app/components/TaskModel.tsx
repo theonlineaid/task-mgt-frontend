@@ -37,7 +37,7 @@ const CreateTaskModal = () => {
     const fetchTeam = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/user/get-team",
+          "https://task-mgt-backend.onrender.com/api/user/get-team",
           {
             method: "GET",
             cache: "no-store",
@@ -48,10 +48,10 @@ const CreateTaskModal = () => {
         if (response.ok) {
           setTeamOptions(result || []);
         } else {
-          console.error("Failed to fetch team members");
+          console.log("Failed to fetch team members");
         }
       } catch (error) {
-        console.error("Error fetching team members:", error);
+        console.log("Error fetching team members:", error);
       }
     };
 
@@ -71,7 +71,7 @@ const CreateTaskModal = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/task/create",
+        "https://task-mgt-backend.onrender.com/api/task/create",
         {
           method: "POST",
           headers: {
@@ -92,7 +92,7 @@ const CreateTaskModal = () => {
         alert(result.message || "Failed to create task.");
       }
     } catch (error) {
-      console.error("Error creating task:", error);
+      console.log("Error creating task:", error);
       alert("An error occurred. Please try again.");
     }
   };

@@ -23,7 +23,7 @@ const DashboardCards: React.FC = () => {
     const fetchTaskData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/task/dashboard",
+          "https://task-mgt-backend.onrender.com/api/task/dashboard",
           {
             method: "GET",
             cache: "no-store",
@@ -41,6 +41,7 @@ const DashboardCards: React.FC = () => {
         }
 
         const data = await response.json();
+        console.log
         setTaskData(data);
       } catch (err) {
         setError((err as Error).message);
@@ -51,6 +52,7 @@ const DashboardCards: React.FC = () => {
 
     fetchTaskData();
   }, []);
+
 
   if (loading) {
     return (
