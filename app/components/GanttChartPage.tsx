@@ -73,7 +73,7 @@ export default function GanttChartPage() {
     async function fetchTasks() {
       try {
         const response = await fetch(
-          "https://task-mgt-backend.onrender.com/api/task/dashboard",
+          "http://localhost:5000/api/task/dashboard",
           {
             cache: "no-store",
             credentials: "include",

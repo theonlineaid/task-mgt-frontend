@@ -37,7 +37,7 @@ const CreateTaskModal = () => {
     const fetchTeam = async () => {
       try {
         const response = await fetch(
-          "https://task-mgt-backend.onrender.com/api/user/get-team",
+          "http://localhost:5000/api/user/get-team",
           {
             method: "GET",
             cache: "no-store",
@@ -71,7 +71,7 @@ const CreateTaskModal = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://task-mgt-backend.onrender.com/api/task/create",
+        "http://localhost:5000/api/task/create",
         {
           method: "POST",
           headers: {

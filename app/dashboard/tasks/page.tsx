@@ -47,7 +47,7 @@ export default function TaskBoard() {
 
     try {
       const response = await fetch(
-        `https://task-mgt-backend.onrender.com/api/task/create-subtask/${subtaskDialog.taskId}`,
+        `http://localhost:5000/api/task/create-subtask/${subtaskDialog.taskId}`,
         {
           method: "PUT",
           credentials: "include",
@@ -83,7 +83,7 @@ export default function TaskBoard() {
     const fetchTasks = async () => {
       try {
         const res = await fetch(
-          "https://task-mgt-backend.onrender.com/api/task/",
+          "http://localhost:5000/api/task/",
           {
             credentials: "include",
           }

@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://task-mgt-backend.onrender.com/api/user/login",
+        "http://localhost:5000/api/user/login",
         {
           method: "POST",
           headers: {

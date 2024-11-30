@@ -31,7 +31,7 @@ export default function AccountMenu() {
   const handleLogout = async () => {
     try {
       const response = await fetch(
-        "https://task-mgt-backend.onrender.com/api/user/logout",
+        "http://localhost:5000/api/user/logout",
         {
           method: "POST",
           credentials: "include", // Include cookies in the request

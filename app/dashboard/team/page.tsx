@@ -45,7 +45,7 @@ const TeamPage = () => {
     const fetchUsers = async () => {
       try {
         const response = await fetch(
-          "https://task-mgt-backend.onrender.com/api/user/get-team",
+          "http://localhost:5000/api/user/get-team",
           {
             method: "GET",
             credentials: "include",
@@ -90,7 +90,7 @@ const TeamPage = () => {
     } else if (modalType === "delete" && selectedUser) {
       try {
         const response = await fetch(
-          `https://task-mgt-backend.onrender.com/api/user/delete/${selectedUser._id}`,
+          `http://localhost:5000/api/user/delete/${selectedUser._id}`,
           {
             method: "DELETE",
             credentials: "include",
@@ -119,7 +119,7 @@ const TeamPage = () => {
   const handleCreateUser = async () => {
     try {
       const response = await fetch(
-        "https://task-mgt-backend.onrender.com/api/user/register",
+        "http://localhost:5000/api/user/register",
         {
           method: "POST",
           headers: {

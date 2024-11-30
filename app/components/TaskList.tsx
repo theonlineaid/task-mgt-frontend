@@ -25,7 +25,7 @@ const Tasklist = () => {
     const fetchTasks = async () => {
       try {
         const response = await fetch(
-          "https://task-mgt-backend.onrender.com/api/task",
+          "http://localhost:5000/api/task",
           {
             method: "GET",
             credentials: "include",
