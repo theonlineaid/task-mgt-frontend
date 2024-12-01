@@ -14,10 +14,7 @@ import {
 import TaskMenu from "./TaskMenu";
 
 export default function TaskContent({
-  task,
-  onEdit,
-  onDelete,
-  onDuplicate,
+  task
 }: any) {
   const getInitials = (name: string) => {
     return name
@@ -67,9 +64,9 @@ export default function TaskContent({
     <CardContent>
       <TaskMenu
         task={task}
-        onEdit={onEdit}
+        onEdit={()=> null}
         onDelete={handleTrash}
-        onDuplicate={onDuplicate}
+        onDuplicate={()=> null}
       />
 
       <Box sx={{ my: 2 }}>

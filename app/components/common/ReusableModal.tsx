@@ -29,7 +29,7 @@ const ReusableModal: React.FC<ReusableModalProps> = ({
           p: 4,
           borderRadius: 2,
           boxShadow: 24,
-          maxWidth: "500px",
+          minWidth: "500px",
         }}
       >
         <Typography variant="h6" sx={{ mb: 2 }}>

@@ -10,7 +10,7 @@ import {
   MenuItem,
 } from "@mui/material";
 
-interface TeamMember {
+export interface TeamMember {
   _id: string;
   name: string;
   title: string;
