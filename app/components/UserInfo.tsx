@@ -52,7 +52,6 @@ export default function UserInfo() {
     fetchData();
   }, []);
 
-  console.log(users)
 
   // Function to generate initials from the full name
   const getInitials = (name: string) => {

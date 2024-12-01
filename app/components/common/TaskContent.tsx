@@ -44,7 +44,7 @@ export default function TaskContent({
   const handleTrash = async (taskId: string) => {
     try {
       // Send a PUT request to the API to trash the task
-      const response = await fetch(`https://task-mgt-backend.onrender.com/api/task/${taskId}`, {
+      const response = await fetch(`https://task-mgt-backend.onrender.com/api/task/trash/${taskId}`, {
         method: "PUT",
         credentials: "include",
         headers: {

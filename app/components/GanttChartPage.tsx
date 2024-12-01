@@ -7,16 +7,20 @@ import { Chart } from "react-google-charts";
 interface Task {
   _id: string;
   title: string;
-  date: string;
-  dependencies: string[];
+  date: string; // Start date (format: YYYY-MM-DD)
   stage: string;
 }
 
+// Helper function to parse date safely
+const parseDate = (dateString: string): Date | null => {
+  const date = new Date(dateString);
+  return isNaN(date.getTime()) ? null : date;
+};
+
+// Component to render Gantt chart
 const GanttChart = ({ tasks }: { tasks: Task[] }) => {
-  // Helper function to calculate the milliseconds for durations
   const daysToMilliseconds = (days: number) => days * 24 * 60 * 60 * 1000;
 
-  // Define columns for the Google Gantt chart
   const columns = [
     { type: "string", label: "Task ID" },
     { type: "string", label: "Task Name" },
@@ -24,23 +28,24 @@ const GanttChart = ({ tasks }: { tasks: Task[] }) => {
     { type: "date", label: "End Date" },
     { type: "number", label: "Duration" },
     { type: "number", label: "Percent Complete" },
-    { type: "string", label: "Dependencies" }, // Added for dependencies
+    { type: "string", label: "Dependencies" },
   ];
 
-  // Transform the tasks into the required format for Google Gantt
+  // Map tasks to chart rows
   const rows = tasks.map((task) => {
-    const startDate = new Date(task.date);
-    const endDate = new Date(startDate.getTime() + daysToMilliseconds(1)); // Adding one day for end date
+    const startDate = parseDate(task.date);
+    const endDate = startDate
+      ? new Date(startDate.getTime() + daysToMilliseconds(7))
+      : null; // Default to 7 days if no end date provided
 
-    // Return the task in the required format for Google Gantt chart
     return [
-      task._id, // Task ID
-      task.title, // Task Name
-      startDate, // Start Date
-      endDate, // End Date
-      null, // Duration (null because we have start and end date)
-      task.stage === "completed" ? 100 : task.stage === "in progress" ? 50 : 0, // Progress based on stage
-      task.dependencies.join(", ") || null, // Dependencies
+      task._id,
+      task.title,
+      startDate,
+      endDate,
+      endDate && startDate ? null : daysToMilliseconds(7), // Duration if no dates
+      Math.floor(Math.random() * 100), // Random placeholder for percent complete
+      null, // No dependencies
     ];
   });
 
@@ -60,10 +65,12 @@ const GanttChart = ({ tasks }: { tasks: Task[] }) => {
       height="400px"
       data={data}
       options={options}
+      loader={<div>Loading Chart...</div>}
     />
   );
 };
 
+// Main Gantt Chart Page Component
 export default function GanttChartPage() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
@@ -87,7 +94,7 @@ export default function GanttChartPage() {
         const data = await response.json();
         setTasks(data.last10Task || []); // Set the tasks from the API response
       } catch (err: any) {
-        setError(err.message);
+        setError(err.message || "An unknown error occurred.");
       } finally {
         setLoading(false);
       }
@@ -103,17 +110,26 @@ export default function GanttChartPage() {
       </Box>
     );
   }
+
   if (error) {
-    return <p>Error: {error}</p>;
+    return (
+      <Box sx={{ textAlign: "center", marginTop: 4 }}>
+        <Typography color="error">Error: {error}</Typography>
+      </Box>
+    );
   }
 
   if (tasks.length === 0) {
-    return <p>No tasks available.</p>;
+    return (
+      <Box sx={{ textAlign: "center", marginTop: 4 }}>
+        <Typography>No tasks available.</Typography>
+      </Box>
+    );
   }
 
   return (
     <Box sx={{ mt: 5 }}>
-      <Typography variant={"h5"}>Task Overflow</Typography>
+      <Typography variant="h5">Task Overflow</Typography>
       <GanttChart tasks={tasks} />
     </Box>
   );
