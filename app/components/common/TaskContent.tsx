@@ -13,9 +13,7 @@ import {
 } from "@mui/material";
 import TaskMenu from "./TaskMenu";
 
-export default function TaskContent({
-  task
-}: any) {
+export default function TaskContent({ task }: any) {
   const getInitials = (name: string) => {
     return name
       .split(" ")
@@ -41,22 +39,25 @@ export default function TaskContent({
   const handleTrash = async (taskId: string) => {
     try {
       // Send a PUT request to the API to trash the task
-      const response = await fetch(`https://task-mgt-backend.onrender.com/api/task/trash/${taskId}`, {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://task-mgt-backend.onrender.com/api/task/trash/${taskId}`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         console.log("Task trashed successfully");
         // Optionally, update local state to reflect the trashed task
       } else {
-        console.error("Failed to trash the task");
+        console.log("Failed to trash the task");
       }
     } catch (error) {
-      console.error("Error occurred while trashing task:", error);
+      console.log("Error occurred while trashing task:", error);
     }
   };
 
@@ -64,9 +65,9 @@ export default function TaskContent({
     <CardContent>
       <TaskMenu
         task={task}
-        onEdit={()=> null}
+        onEdit={() => null}
         onDelete={handleTrash}
-        onDuplicate={()=> null}
+        onDuplicate={() => null}
       />
 
       <Box sx={{ my: 2 }}>

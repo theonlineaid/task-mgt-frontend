@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ReusableModal from "./ReusableModal";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 // import { useRouter } from 'next/router'
 
 const updateTaskApi = async (taskId: string, updatedTask: any) => {
@@ -44,7 +44,7 @@ const updateTaskApi = async (taskId: string, updatedTask: any) => {
 };
 
 export default function TaskMenu({ task, onDelete, onDuplicate }: any) {
-  const router = useRouter()
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isModalOpen, setModalOpen] = useState(false);
   const [editedTask, setEditedTask] = useState(task);
@@ -57,7 +57,7 @@ export default function TaskMenu({ task, onDelete, onDuplicate }: any) {
   });
 
   const teamOptions = task?.team?.map((member: any) => ({
-    id: member._id,    // Unique identifier for each team member
+    id: member._id, // Unique identifier for each team member
     title: member?.role, // Member's title
     name: member.name, // Member's name
   }));
@@ -104,7 +104,6 @@ export default function TaskMenu({ task, onDelete, onDuplicate }: any) {
     setAnchorEl(null); // Close the menu
   };
 
-
   return (
     <Box>
       <Box
@@ -138,7 +137,8 @@ export default function TaskMenu({ task, onDelete, onDuplicate }: any) {
         <MenuItem onClick={handleEdit}>Edit</MenuItem>
         <MenuItem onClick={() => onDelete(task._id)}>Delete</MenuItem>
         <MenuItem onClick={() => onDuplicate(task)}>Duplicate</MenuItem>
-        <MenuItem onClick={handleDetails}>Details</MenuItem> {/* Details menu item */}
+        <MenuItem onClick={handleDetails}>Details</MenuItem>{" "}
+        {/* Details menu item */}
       </Menu>
 
       <Divider />
